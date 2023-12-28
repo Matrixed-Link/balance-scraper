@@ -14,7 +14,7 @@ Balance-Scraper is a Node.js application designed to fetch and monitor the ETH b
 
 ## Prerequisites
 
-- Node.js (v14 or later)
+- Node.js (v18.5)
 - Docker and Docker Compose (for containerized setup)
 - An Ethereum wallet address
 
@@ -23,7 +23,7 @@ Balance-Scraper is a Node.js application designed to fetch and monitor the ETH b
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/balance-scraper.git
+   git clone https://github.com/Matrixed-Link/balance-scraper.git
    cd balance-scraper
    ```
 
@@ -38,10 +38,9 @@ Balance-Scraper is a Node.js application designed to fetch and monitor the ETH b
    Create a `.env` file in the root directory with the following contents:
 
    ```env
-   WALLET_ADDRESS=your_ethereum_wallet_address
-   RPC_URL_ARBITRUM=your_arbitrum_rpc_url
-   RPC_URL_POLYGON=your_polygon_rpc_url
-   # Add more networks as needed
+    WALLET_ADDRESS=[WALLET_TO_TRACK]
+    RPC_URL_ETHEREUM=https://RPCURL
+    # Add other networks as needed with RPC_URL_[NETWORK_NAME] format
    ```
 
 ## Usage
@@ -51,7 +50,7 @@ Balance-Scraper is a Node.js application designed to fetch and monitor the ETH b
   Run the application directly using Node.js:
 
   ```bash
-  node index.js
+  node app.js
   ```
 
 - **Docker:**
