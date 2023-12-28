@@ -1,0 +1,19 @@
+version: '3'
+services:
+  balance-scraper:
+    container_name: balance-scraper
+    build: .
+    ports:
+      - "9091:9091"
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    external: true
