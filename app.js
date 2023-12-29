@@ -55,7 +55,7 @@ if (missingRpcUrls.length > 0) {
 
 // Function to update wallet balances
 async function updateWalletBalances() {
-    log('DEBUG','Scraping balances.');
+    log('DEBUG', 'Scraping balances.');
     try {
         for (const [walletName, walletAddress] of Object.entries(walletAddresses)) {
             let walletNetworks = config.wallets[walletName].networks;
@@ -64,7 +64,7 @@ async function updateWalletBalances() {
             walletNetworks = Array.isArray(walletNetworks) ? walletNetworks : [walletNetworks];
 
             for (const network of walletNetworks) {
-                log('DEBUG',`Scraping balance for ${walletName} (${walletAddress}) on network: ${network}.`);
+                log('DEBUG', `Scraping balance for ${walletName} (${walletAddress}) on network: ${network}.`);
                 const rpcUrl = networks[network];
                 // Check if the RPC URL is provided
                 if (!rpcUrl) {
@@ -76,10 +76,9 @@ async function updateWalletBalances() {
 
                 try {
                     const balance = await web3.eth.getBalance(walletAddress);
-                    const balanceInETH = parseFloat(web3.utils.fromWei(balance, 'ether'));
-
+                    const balanceNative = parseFloat(web3.utils.fromWei(balance, 'ether'));
                     // Set the balance in the Prometheus gauge
-                    walletBalance.set({ network, walletName }, balanceInETH);
+                    walletBalance.set({ network, walletName }, balanceNative);
                 } catch (networkError) {
                     log('ERROR', `Error fetching balance for wallet ${walletName} on network ${network}: ${networkError}`);
                 }
