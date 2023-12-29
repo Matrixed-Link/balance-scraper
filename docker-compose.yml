@@ -5,9 +5,7 @@ services:
     build: .
     ports:
       - "9091:9091"
-    restart: always
-    env_file:
-      - .env
+    restart: unless-stopped
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

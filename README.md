@@ -3,20 +3,19 @@
 
 ## Description
 
-Balance-Scraper is a Node.js application designed to fetch and monitor the ETH balance of a specified wallet address across multiple networks. It utilizes Web3.js for blockchain interactions and Prometheus for metric collection. The application supports dynamic network addition/removal via an environment configuration, making it highly flexible and adaptable.
+Balance-Scraper is a Node.js application designed to fetch and monitor the ETH balance of specified wallets across multiple networks, including Arbitrum and Polygon. It leverages Web3.js for blockchain interactions and Prometheus for metric collection. The application is configured via a `config.json` file, allowing for flexible and dynamic network and wallet management.
 
 ## Features
 
-- Fetch ETH balance from multiple networks (Arbitrum, Polygon, etc.).
-- Prometheus integration for metric scraping.
-- Dockerized for easy deployment and scaling.
-- Dynamic network management through `.env` file configuration.
+- Fetches ETH balances from multiple networks (Arbitrum, Polygon, etc.).
+- Integrated with Prometheus for metric scraping.
+- Docker support for easy deployment and scaling.
+- Configurable through `config.json` for dynamic wallet and network management.
 
 ## Prerequisites
 
 - Node.js (v18.5)
 - Docker and Docker Compose (for containerized setup)
-- An Ethereum wallet address
 
 ## Installation
 
@@ -33,27 +32,21 @@ Balance-Scraper is a Node.js application designed to fetch and monitor the ETH b
    npm install
    ```
 
-3. **Environment Setup:**
+3. **Configuration Setup:**
 
-   Create a `.env` file in the root directory with the following contents:
-
-   ```env
-    WALLET_ADDRESS=[WALLET_TO_TRACK]
-    RPC_URL_ETHEREUM=https://RPCURL
-    # Add other networks as needed with RPC_URL_[NETWORK_NAME] format
-   ```
+   Rename `config.json.example` to `config.json` and update the file with appropriate settings and wallet details.
 
 ## Usage
 
 - **Direct Execution:**
 
-  Run the application directly using Node.js:
+  Run the application using Node.js:
 
   ```bash
   node app.js
   ```
 
-- **Docker:**
+- **Docker Deployment:**
 
   1. Build and start the Docker container:
 
@@ -61,19 +54,19 @@ Balance-Scraper is a Node.js application designed to fetch and monitor the ETH b
      docker-compose up --build
      ```
 
-  2. The application will be running and can be accessed at `http://localhost:9091`.
-
-## Docker Deployment
-
-The provided `Dockerfile` and `docker-compose.yml` facilitate easy deployment. The `docker-compose.yml` includes configuration for auto-restarting and external network monitoring. Use `docker-compose` commands to manage the deployment.
+  2. The application will be running and accessible at `http://localhost:9091`.
 
 ## Monitoring
 
-Metrics are exposed at `/metrics` endpoint for Prometheus scraping. Configure Prometheus to scrape data from `http://localhost:9091/metrics`.
+Metrics are exposed at the `/metrics` endpoint for Prometheus scraping. Configure Prometheus to scrape metrics from `http://localhost:9091/metrics`.
+
+## Docker Deployment
+
+The provided `Dockerfile` and `docker-compose.yml` support seamless deployment. The `docker-compose.yml` includes configurations for auto-restarting and volume management. Use `docker-compose` commands for deployment.
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/your-username/balance-scraper/issues) if you want to contribute.
+We welcome contributions, issues, and feature requests. Feel free to check the [issues page](https://github.com/Matrixed-Link/balance-scraper/issues) if you want to contribute.
 
 ## License
 

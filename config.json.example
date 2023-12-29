@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "LOG_LEVEL": "DEBUG,INFO,WARN,ERROR",
+        "POLL_TIMER": YOUR_POLL_TIMER_IN_SECONDS,
+        "PORT": YOUR_PORT_NUMBER,
+    },
+    "wallets": {
+        "WALLET_NAME_1": {
+            "address": "YOUR_WALLET_ADDRESS",
+            "networks": ["NETWORK_1", "NETWORK_2"]
+        },
+        // Add more wallets as needed
+    },
+    "endpoints": {
+        "polygon": "RPC_URL",
+        // Add more networks as needed
+
+    }
+}
