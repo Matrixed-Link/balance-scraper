@@ -3,11 +3,11 @@
 
 ## Description
 
-Balance-Scraper is a Node.js application designed to fetch and monitor the ETH balance of specified wallets across multiple networks, including Arbitrum and Polygon. It leverages Web3.js for blockchain interactions and Prometheus for metric collection. The application is configured via a `config.json` file, allowing for flexible and dynamic network and wallet management.
+Balance-Scraper is a Node.js application designed to fetch and monitor the native gas balances of specified wallets across multiple EVM networks. It leverages Web3.js for blockchain interactions and Prometheus for metric collection. The application is configured via a `config.json` file, allowing for flexible and dynamic network and wallet management.
 
 ## Features
 
-- Fetches ETH balances from multiple networks (Arbitrum, Polygon, etc.).
+- Fetches native gas balances from multiple networks (EVM).
 - Integrated with Prometheus for metric scraping.
 - Docker support for easy deployment and scaling.
 - Configurable through `config.json` for dynamic wallet and network management.
