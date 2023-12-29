@@ -90,7 +90,7 @@ async function updateWalletBalances() {
 }
 
 // Pre-run scraping and set interval for periodic updates
-const pollInterval = config.settings.POLL_TIMER || 15; // Default polling interval
+const pollInterval = config.settings.POLL_TIMER || 15; // Default polling interval 15s
 log('INFO', `Scraping every: ${pollInterval}s`);
 updateWalletBalances();
 setInterval(updateWalletBalances, pollInterval * 1000);
