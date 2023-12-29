@@ -1,6 +1,6 @@
 // Importing required modules
 const config = require('./config.json'); // Configuration file
-const { Web3 } = require('web3');
+const { Web3 } = require('web3'); // Web3JS framework
 const express = require('express'); // Express.js framework
 const promClient = require('prom-client'); // Prometheus client for metrics
 
@@ -40,8 +40,18 @@ const walletAddresses = Object.fromEntries(
 );
 
 // Log the networks and wallets that will be scraped
-log('INFO', `Scraping balances for networks: ${Array.from(new Set(Object.values(config.wallets).flatMap(wallet => wallet.networks))).join(', ')}`);
-log('INFO', `Scraping balances for wallets: ${Object.keys(walletAddresses).join(', ')}`);
+const scrapableNetworks = Array.from(new Set(Object.values(config.wallets).flatMap(wallet => wallet.networks)));
+
+// Check if RPC URLs are provided for all scrapable networks
+const missingRpcUrls = scrapableNetworks.filter(network => !networks[network]);
+
+if (missingRpcUrls.length > 0) {
+    log('ERROR', `Missing RPC URLs for networks: ${missingRpcUrls.join(', ')}`);
+    process.exit(1)
+} else {
+    log('INFO', `Scraping balances for networks: ${scrapableNetworks.join(', ')}`);
+    log('INFO', `Scraping balances for wallets: ${Object.keys(walletAddresses).join(', ')}`);
+}
 
 // Function to update wallet balances
 async function updateWalletBalances() {
