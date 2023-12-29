@@ -64,6 +64,7 @@ async function updateWalletBalances() {
             walletNetworks = Array.isArray(walletNetworks) ? walletNetworks : [walletNetworks];
 
             for (const network of walletNetworks) {
+                log('DEBUG',`Scraping balance for ${walletName} (${walletAddress}) on network: ${network}.`);
                 const rpcUrl = networks[network];
                 // Check if the RPC URL is provided
                 if (!rpcUrl) {
