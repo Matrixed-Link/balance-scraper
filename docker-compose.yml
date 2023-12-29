@@ -9,9 +9,3 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-    networks:
-      - monitoring
-
-networks:
-  monitoring:
-    external: true
