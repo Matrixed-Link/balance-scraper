@@ -12,7 +12,7 @@
         // Add more wallets as needed
     },
     "endpoints": {
-        "polygon": "RPC_URL",
+        "NETWORK_1": "RPC_URL1",
         // Add more networks as needed
 
     }
